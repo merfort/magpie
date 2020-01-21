@@ -7,6 +7,7 @@
 
 $ifthen "%c60_2ndgen_biodem%" == "coupling" i60_bioenergy_dem(t,i) = f60_bioenergy_dem_coupling(t,i);
 $elseif "%c60_2ndgen_biodem%" == "emulator" i60_bioenergy_dem(t,i) = f60_bioenergy_dem_emulator(t)/card(i);
+$elseif "%c60_2ndgen_biodem%" == "zero" i60_bioenergy_dem(t,i) = 0;
 $else i60_bioenergy_dem(t,i) = f60_bioenergy_dem(t,i,"%c60_2ndgen_biodem%");
 $endif
 * Add minimal bioenergy demand in case of zero demand to avoid zero prices

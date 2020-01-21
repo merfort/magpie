@@ -12,6 +12,9 @@ $elseif "%c56_pollutant_prices%" == "emulator" im_pollutant_prices(t,i,pollutant
 $else im_pollutant_prices(t,i,pollutants) = f56_pollutant_prices(t,i,pollutants,"%c56_pollutant_prices%");
 $endif
 
+$if "%c56_turn_off_pollutant_prices%" == "CO2" im_pollutant_prices(t,i,"co2_c") = 0;
+$if "%c56_turn_off_pollutant_prices%" == "all" im_pollutant_prices(t,i,pollutants) = 0;
+
 ***save im_pollutant_prices to parameter
 p56_pollutant_prices_input(t,i,pollutants) = im_pollutant_prices(t,i,pollutants);
 
