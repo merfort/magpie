@@ -76,8 +76,8 @@ In addition *R* (https://www.r-project.org/) is required for pre- and
 postprocessing and run management (needs to be added to the PATH variable
 as well).
 
-For R some packages are required to run MAgPIE. All except of one (`gdxrrw`) are
-either distributed via the offical R CRAN or via a separate repository hosted at
+Some R packages are required to run MAgPIE. All are either distributed via 
+the offical R CRAN or via a separate repository hosted at
 PIK (PIK-CRAN). Before proceeding PIK-CRAN should be added to the list of
 available repositories via:
 ```
@@ -87,9 +87,6 @@ options(repos = c(CRAN = "@CRAN@", pik = "https://rse.pik-potsdam.de/r/packages"
 Under Windows you need to install Rtools
 (https://cran.r-project.org/bin/windows/Rtools/) and to add it to the PATH
 variable. After that you can run the following lines of code:
-
-
-After that all packages can be installed via `install.packages`
 
 ```
 pkgs <- c("gdxrrw",
