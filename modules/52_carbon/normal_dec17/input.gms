@@ -1,9 +1,13 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
+
+scalar
+ s52_forestry_plantation switch for using natveg (0) or plantation (1) growth curves for afforestation in forestry module / 0 /
+;
 
 $setglobal c52_carbon_scenario  nocc
 *   options:   cc  (climate change)

@@ -1,4 +1,4 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -23,7 +23,7 @@
 *' Wood demand is set to zero because forestry is not modeled in this realization.
 vm_supply.fx(i2,kforestry) = 0;
 
-*' Certain areas (e.g. the boreal zone) are excluded from endogenous afforestation. DON'T USE TYPE32 SET HERE
+*' Certain areas (e.g. the boreal zone) are excluded from endogenous afforestation.
 v32_land.lo(j,"aff","ac0") = 0;
 v32_land.up(j,"aff","ac0") = f32_aff_mask(j) * sum(land, pcm_land(j,land));
 
@@ -32,7 +32,8 @@ v32_land.fx(j,"aff","ac0")$(fm_carbon_density(t,j,"forestry","vegc") <= 20) = 0;
 
 *' CDR from afforestation for each age-class, depending on planning horizon.
 p32_cdr_ac(t,j,ac)$(ord(ac) > 1 AND (ord(ac)-1) <= s32_planing_horizon/5)
-= pm_carbon_density_ac(t,j,ac,"vegc") - pm_carbon_density_ac(t,j,ac-1,"vegc");
+= pm_carbon_density_ac_forestry(t,j,ac,"vegc") - pm_carbon_density_ac_forestry(t,j,ac-1,"vegc");
+*' @stop
 
 * Regrowth of natural vegetation (natural succession) is modelled by shifting age-classes according to time step length.
 s32_shift = (5/5)$(ord(t)=1);
@@ -53,7 +54,10 @@ pc32_land(j,type32,ac) = p32_land(t,j,type32,ac);
 vm_land.l(j,"forestry") = sum((type32,ac), p32_land(t,j,type32,ac));
 pcm_land(j,"forestry") = sum((type32,ac), p32_land(t,j,type32,ac));
 
-** fix v32_land for all age classes except ac0 (aff and ndc ac0 is free)
-v32_land.fx(j,type32,ac_sub) = pc32_land(j,type32,ac_sub);
-** fix plantations ac0 to zero (no forestry modelled).
-v32_land.fx(j,"plant","ac0") = 0;
+** fix ndc afforestation forever, all age-classes are fixed except ac0
+v32_land.fx(j,"ndc",ac_sub) = pc32_land(j,"ndc",ac_sub);
+** fix c price induced afforestation based on s32_planing_horizon, fixed only until end of s32_planing_horizon, ac0 is free
+v32_land.fx(j,"aff",ac_sub)$(ord(ac_sub) <= s32_planing_horizon/5) = pc32_land(j,"aff",ac_sub);
+v32_land.up(j,"aff",ac_sub)$(ord(ac_sub) > s32_planing_horizon/5) = pc32_land(j,"aff",ac_sub);
+** fix forestry plantations for all age-classes (no forestry modelled)
+v32_land.fx(j,"plant",ac) = pc32_land(j,"plant",ac);

@@ -1,4 +1,4 @@
-# |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+# |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 # |  authors, and contributors see CITATION.cff file. This file is part
 # |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 # |  AGPL-3.0, you are granted additional permissions described in the
@@ -31,28 +31,19 @@ getInput <- function(gdx,ghg_price=TRUE,biodem=TRUE) {
 #start MAgPIE run
 source("config/default.cfg")
 
-#cfg$force_download <- TRUE
-
 cfg$results_folder <- "output/:title:"
 
-prefix <- "C02_"
+prefix <- "RMC01"
 
 for (ssp in c("SDP","SSP1","SSP2","SSP5")) {
-  
-  cfg <- setScenario(cfg,c(ssp,"NDC"))
-  cfg$gms$c56_pollutant_prices <- "coupling"
-  cfg$gms$c60_2ndgen_biodem <- "coupling"
-  # cfg$gms$c56_pollutant_prices <- "R2M41-SSP2-PkBudg900"
-  # cfg$gms$c60_2ndgen_biodem <- "R2M41-SSP2-PkBudg900"
-  #  cfg$gms$s15_elastic_demand <- 0
-#  cfg$gms$land <- "landmatrix_dec18"
-  # cfg$gms$s80_maxiter <- 20
-  #  cfg$gms$land <- "feb15"
-  #  cfg$gms$s80_optfile <- 0
-  
-  getInput(paste0("/p/projects/piam/runs/coupled-magpie/output-20200129/C_",ssp,"-PkBudg900-mag-4/fulldata.gdx"))
-  
-  cfg$title <- paste0(prefix,ssp,"_PkBudg900")
-  start_run(cfg,codeCheck=FALSE)
+ for (pol in c("NPi","PkBudg900","PkBudg1100","PkBudg1300")) {
+   if(ssp=="SDP" & pol=="PkBudg900") pol <- "PkBudg1000"
+   getInput(paste0("/p/projects/piam/runs/coupled-magpie/output/C_",ssp,"-",pol,"-mag-4/fulldata.gdx"))
+   cfg$title <- paste(prefix,ssp,pol,sep="-")
+   cfg <- setScenario(cfg,c(ssp,if(pol=="NPi") "NPI" else "NDC"))
+   cfg$gms$c56_pollutant_prices <- "coupling"
+   cfg$gms$c60_2ndgen_biodem <- "coupling"
+   start_run(cfg,codeCheck=FALSE)
+ }
 }
 

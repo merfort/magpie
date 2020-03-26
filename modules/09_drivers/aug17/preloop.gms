@@ -1,4 +1,4 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -19,7 +19,7 @@ i09_gdp_ppp(t,i) = sum(i_to_iso(i,iso),i09_gdp_ppp_iso(t,iso));
 im_pop(t,i) = sum(i_to_iso(i,iso),im_pop_iso(t,iso));
 
 * Status of countries' development
-im_development_state(t,i) = f09_development_state(t,i,"%c09_gdp_scenario%");
+im_development_state(t_all,i) = f09_development_state(t_all,i,"%c09_gdp_scenario%");
 
 * GPD per capita for MAgPIE regions
  im_gdp_pc_mer(t,i)$(

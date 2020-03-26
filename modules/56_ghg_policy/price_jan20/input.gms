@@ -1,4 +1,4 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -13,12 +13,18 @@ scalars
   s56_ghgprice_phase_in  Switch for phasing-in GHG price over a 20 year period  (1=on 0=off) / 0 /
   s56_ghgprice_devstate_scaling Switch for scaling GHG price with development state (1=on 0=off) / 0 /
   s56_c_price_induced_aff Switch for C price driven afforestation (1=on 0=off) / 1 /
-  s56_c_price_aff_future Switch for using future (1) or present (0) C prices in afforestation decision / 0 /
+  s56_c_price_exp_aff c price expectation for afforestation (years) / 50 /
+  s56_buffer_aff share of carbon credits for afforestation projects pooled in a buffer (1) / 0.2 /
+  s56_counter counter for C price interpolation (1) / 0 /
+  s56_timesteps number of time steps for C price interpolation (1) / 0 /
+  s56_offset helper for C price interpolation (1) / 0 /
 ;
 
 $setglobal c56_pollutant_prices  R2M41-SSP2-NPi
 $setglobal c56_emis_policy  ssp_nosoil
 $setglobal c56_turn_off_pollutant_prices  none
+
+table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 
 table f56_pollutant_prices(t_all,i,pollutants,ghgscen56) GHG certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 $ondelim
@@ -32,7 +38,7 @@ $if "%c56_pollutant_prices%" == "coupling" $include "./modules/56_ghg_policy/inp
 $if "%c56_pollutant_prices%" == "coupling" $offdelim
 $if "%c56_pollutant_prices%" == "coupling" ;
 
-$if "%c56_pollutant_prices%" == "emulator" table f56_pollutant_prices_emulator(t_all,pollutants) Global ghg certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
+$if "%c56_pollutant_prices%" == "emulator" table f56_pollutant_prices_emulator(t_all,i,pollutants) Global ghg certificate prices for N2O-N CH4 CO2-C (USD05MER per t)
 $if "%c56_pollutant_prices%" == "emulator" $ondelim
 $if "%c56_pollutant_prices%" == "emulator" $include "./modules/56_ghg_policy/input/f56_pollutant_prices_emulator.cs3"
 $if "%c56_pollutant_prices%" == "emulator" $offdelim

@@ -1,4 +1,4 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -11,7 +11,7 @@ $setglobal c32_aff_policy  npi
 
 scalars
 	s32_max_aff_area 	Maximum global endogenous afforestation (mio. ha)    / Inf /
-	s32_planing_horizon Afforestation planing horizon (years)            / 80 /
+	s32_planing_horizon Afforestation planing horizon (years)            / 50 /
 ;
 
 parameter f32_aff_mask(j) Afforestation mask (1)

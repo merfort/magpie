@@ -1,4 +1,4 @@
-*** |  (C) 2008-2019 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2020 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -122,6 +122,10 @@ sets
 i2(i) = yes;
 j2(j) = yes;
 
+sets
+        c_title defined to include c_title in GDX
+        / %c_title% /
+;
 
 ***TIME STEPS***
 * ATTENTION: check macros m_year and m_yeardiff if you change something
