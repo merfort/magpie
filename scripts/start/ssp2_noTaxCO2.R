@@ -51,6 +51,7 @@ cfg$gms$c56_turn_off_pollutant_prices <- "CO2"
 cfg$gms$c60_2ndgen_biodem             <- "zero"
 start_run(cfg,codeCheck=FALSE)
 
+#no CO2 tax, 1300 bioenergy, rest tax 1300
 cfg$title <- "R2M41_SSP2_biodem-Budg1300_polprice-Budg1300_noTaxCO2"
 cfg <- setScenario(cfg,c("SSP2","NPI"))
 cfg$gms$c56_pollutant_prices          <- "R2M41-SSP2-Budg1300"
@@ -58,6 +59,7 @@ cfg$gms$c56_turn_off_pollutant_prices <- "CO2"
 cfg$gms$c60_2ndgen_biodem             <- "R2M41-SSP2-Budg1300"
 start_run(cfg,codeCheck=FALSE)
 
+#no CO2 tax, no bioenergy, rest tax 1300
 cfg$title <- "R2M41_SSP2_biodem-zero_polprice-Budg1300_noTaxCO2"
 cfg <- setScenario(cfg,c("SSP2","NDC"))
 cfg$gms$c56_pollutant_prices          <- "R2M41-SSP2-Budg1300"
