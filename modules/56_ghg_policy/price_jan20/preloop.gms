@@ -34,13 +34,13 @@ $endif
 
 ***explicitly set (some) prices to zero 
 $ifthen "%c56_turn_off_pollutant_prices%" == "CO2" 
- im_pollutant_prices(t,i,"co2_c") = 0;
+ im_pollutant_prices(t_all,i,"co2_c") = 0;
 $elseif "%c56_turn_off_pollutant_prices%" == "CO2_N2O" 
- im_pollutant_prices(t,i,"co2_c") = 0;
- im_pollutant_prices(t,i,"n2o_n_direct") = 0;
- im_pollutant_prices(t,i,"n2o_n_indirect") = 0;
+ im_pollutant_prices(t_all,i,"co2_c") = 0;
+ im_pollutant_prices(t_all,i,"n2o_n_direct") = 0;
+ im_pollutant_prices(t_all,i,"n2o_n_indirect") = 0;
 $elseif "%c56_turn_off_pollutant_prices%" == "all" 
- im_pollutant_prices(t,i,pollutants) = 0;
+ im_pollutant_prices(t_all,i,pollutants) = 0;
 $endif
 
 ***save im_pollutant_prices to parameter
