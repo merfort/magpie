@@ -32,8 +32,16 @@ $else
  																				 + f56_pollutant_prices(t_all,i,pollutants,"%c56_pollutant_prices_noselect%") * (1-p56_region_price_shr(t_all,i));
 $endif
 
-$if "%c56_turn_off_pollutant_prices%" == "CO2" im_pollutant_prices(t,i,"co2_c") = 0;
-$if "%c56_turn_off_pollutant_prices%" == "all" im_pollutant_prices(t,i,pollutants) = 0;
+***explicitly set (some) prices to zero 
+$ifthen "%c56_turn_off_pollutant_prices%" == "CO2" 
+ im_pollutant_prices(t,i,"co2_c") = 0;
+$elseif "%c56_turn_off_pollutant_prices%" == "CO2_N2O" 
+ im_pollutant_prices(t,i,"co2_c") = 0;
+ im_pollutant_prices(t,i,"n2o_n_direct") = 0;
+ im_pollutant_prices(t,i,"n2o_n_indirect") = 0;
+$elseif "%c56_turn_off_pollutant_prices%" == "all" 
+ im_pollutant_prices(t,i,pollutants) = 0;
+$endif
 
 ***save im_pollutant_prices to parameter
 p56_pollutant_prices_input(t_all,i,pollutants) = im_pollutant_prices(t_all,i,pollutants);
