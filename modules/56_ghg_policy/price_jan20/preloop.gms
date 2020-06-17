@@ -43,6 +43,10 @@ $elseif "%c56_turn_off_pollutant_prices%" == "all"
  im_pollutant_prices(t_all,i,pollutants) = 0;
 $endif
 
+***reduce pollutant prices by a factor
+***(used for scenarios with differentiated taxes between LU and energy sector)
+im_pollutant_prices(t_all,i,pollutants) = s56_pollutant_price_factor * im_pollutant_prices(t_all,i,pollutants)
+
 ***save im_pollutant_prices to parameter
 p56_pollutant_prices_input(t_all,i,pollutants) = im_pollutant_prices(t_all,i,pollutants);
 
