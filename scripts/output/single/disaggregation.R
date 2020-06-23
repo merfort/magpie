@@ -25,6 +25,7 @@ land_lr_file     <- "avl_land_t.cs3"
 land_hr_file     <- "avl_land_t_0.5.mz"
 land_hr_out_file           <- "cell.land_0.5.mz"
 land_hr_share_out_file     <- "cell.land_0.5_share.mz"
+croparea_hr_out_file       <- "cell.croparea_0.5.mz"
 croparea_hr_share_out_file <- "cell.croparea_0.5_share.mz"
 
 prev_year        <- "y1985"            #timestep before calculations in MAgPIE
@@ -130,5 +131,6 @@ area_shr_hr <- area_hr/dimSums(land_hr,dim=3.1)
 
 print("Write outputs cell.cropara_share")
 # write share of crop types in terms of total cell size
+write.magpie(area_hr,    path(outputdir,paste(croparea_hr_out_file,      sep="_")),comment="unit: Mha per grid-cell")
 write.magpie(area_shr_hr,path(outputdir,paste(croparea_hr_share_out_file,sep="_")),comment="unit: grid-cell land area fraction")
 write.magpie(area_shr_hr,path(outputdir,paste(sub(".mz",".nc",croparea_hr_share_out_file),sep="_")),comment="unit: grid-cell land area fraction", verbose=FALSE)
