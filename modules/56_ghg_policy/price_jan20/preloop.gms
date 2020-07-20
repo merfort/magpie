@@ -39,6 +39,10 @@ $elseif "%c56_turn_off_pollutant_prices%" == "CO2_N2O"
  im_pollutant_prices(t_all,i,"co2_c") = 0;
  im_pollutant_prices(t_all,i,"n2o_n_direct") = 0;
  im_pollutant_prices(t_all,i,"n2o_n_indirect") = 0;
+$elseif "%c56_turn_off_pollutant_prices%" == "CH4_N2O" 
+ im_pollutant_prices(t_all,i,"ch4") = 0;
+ im_pollutant_prices(t_all,i,"n2o_n_direct") = 0;
+ im_pollutant_prices(t_all,i,"n2o_n_indirect") = 0;
 $elseif "%c56_turn_off_pollutant_prices%" == "all" 
  im_pollutant_prices(t_all,i,pollutants) = 0;
 $endif
