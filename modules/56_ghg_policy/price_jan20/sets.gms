@@ -83,6 +83,9 @@ sets
    rice, ent_ferm,  beccs/
 
    ac_exp(ac) age-class corresponding to planning horizon
+
+   i_non_oecd56(i) non-OECD economic regions
+   /CHA,IND,LAM,MEA,OAS,REF,SSA/
 ;
 
 $onempty
