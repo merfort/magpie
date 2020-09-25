@@ -47,6 +47,8 @@ $elseif "%c56_turn_off_pollutant_prices%" == "all"
  im_pollutant_prices(t_all,i,pollutants) = 0;
 $elseif "%c56_turn_off_pollutant_prices%" == "all_nonOECD"
  im_pollutant_prices(t_all,i_non_oecd56,pollutants) = 0;
+$elseif "%c56_turn_off_pollutant_prices%" == "all_until2050" 
+ im_pollutant_prices(t_all,i,pollutants)$(m_year(t_all) < 2050) = 0;
 $endif
 
 ***reduce pollutant prices by a factor
