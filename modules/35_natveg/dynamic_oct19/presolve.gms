@@ -65,6 +65,7 @@ $elseif "%c35_protect_scenario%" == "forest"
   p35_save_other(t,j) = p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"other");
 $elseif "%c35_protect_scenario%" == "primforest"
   p35_save_primforest(t,j) = vm_land.l(j,"primforest");
+  p35_save_secdforest(t,j) = 0;
   p35_save_other(t,j) = p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"other");
 $elseif "%c35_protect_scenario%" == "WDPA"
   p35_save_primforest(t,j) = p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"primforest");
