@@ -5,8 +5,6 @@
 *** |  MAgPIE License Exception, version 1.0 (see LICENSE file).
 *** |  Contact: magpie@pik-potsdam.de
 
-* ### nl_fix ###
-
-vm_yld.fx(j,kcr,w) = sum(ct,i14_yields(ct,j,kcr,w))*sum((cell(i,j), supreg(h,i)),vm_tau.l(h)/fm_tau1995(h));
-vm_yld.fx(j,"pasture",w) = sum(ct,i14_yields(ct,j,"pasture",w))*((1-s14_yld_past_switch)
-                          + s14_yld_past_switch*sum((cell(i,j),supreg(h,i)),vm_tau.l(h)/fm_tau1995(h)));
+** Save self sufficiency values as a interface parameter needed in forestry module
+pm_selfsuff_ext(t_ext,h,kforestry) = f21_self_suff("y2150",h,kforestry);
+pm_selfsuff_ext(t_all,h,kforestry) = f21_self_suff(t_all,h,kforestry);
