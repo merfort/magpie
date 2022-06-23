@@ -51,20 +51,41 @@ p35_protect_shr(t,j,prot_type)$(p35_protect_shr(t,j,prot_type) > 1) = 1;
 p35_protect_shr(t,j,prot_type)$(p35_protect_shr(t,j,prot_type) < 0) = 0;
 
 * protection scenarios
+* For scenarios with only partial protection, i.e. with s35_protection_scaling < 1, 
+* areas in WDPA should still be protected. Therefore, use the maximum value as lower 
+* bound.
 $ifthen "%c35_protect_scenario%" == "none"
   p35_save_primforest(t,j) = 0;
   p35_save_secdforest(t,j) = 0;
   p35_save_other(t,j) = 0;
 $elseif "%c35_protect_scenario%" == "full"
-  p35_save_primforest(t,j) = vm_land.l(j,"primforest");
-  p35_save_secdforest(t,j) = vm_land.l(j,"secdforest");
-  p35_save_other(t,j) = vm_land.l(j,"other");
+  p35_save_primforest(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"primforest"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"primforest")
+  );
+  p35_save_secdforest(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"secdforest"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"secdforest")
+  );
+  p35_save_other(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"other"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"other")
+  );
 $elseif "%c35_protect_scenario%" == "forest"
-  p35_save_primforest(t,j) = vm_land.l(j,"primforest");
-  p35_save_secdforest(t,j) = vm_land.l(j,"secdforest");
+  p35_save_primforest(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"primforest"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"primforest")
+  );
+  p35_save_secdforest(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"secdforest"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"secdforest")
+  );
   p35_save_other(t,j) = p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"other");
 $elseif "%c35_protect_scenario%" == "primforest"
-  p35_save_primforest(t,j) = vm_land.l(j,"primforest");
+  p35_save_primforest(t,j) = max(
+    s35_protection_scaling * vm_land.l(j,"primforest"),
+    p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"primforest")
+  );
   p35_save_secdforest(t,j) = 0;
   p35_save_other(t,j) = p35_protect_shr(t,j,"WDPA")*pm_land_start(j,"other");
 $elseif "%c35_protect_scenario%" == "WDPA"
