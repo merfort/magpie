@@ -7,7 +7,6 @@
 
 scalars
  s35_shift number of 5-year age-classes corresponding to current time step length (1)
- s35_protection_scaling scaling factor for land protection scenarios (1) / 1 / 
 ;
 
 parameters

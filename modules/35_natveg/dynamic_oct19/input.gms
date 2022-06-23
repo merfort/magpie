@@ -20,3 +20,7 @@ $ondelim
 $include "./modules/35_natveg/input/npi_ndc_ad_aolc_pol.cs3"
 $offdelim
 ;
+
+scalars
+ s35_protection_scaling scaling factor for land protection scenarios (1) / 1 / 
+;
