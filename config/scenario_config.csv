@@ -1,5 +1,5 @@
 ;cc;nocc;SSP1;SSP2;SSP3;SSP4;SSP5;SDP;BASE;NPI;NDC;coupling;emulator;input;eat_lancet_diet;SUSTAg1;SUSTAg2;SUSTAg3;SUSTAg4;SUSTAg5;noTaxCO2;noTaxCO2_N2O;noTaxCH4_N2O;allTaxOff;allTaxOff_protForest;allTaxOff_protPrimforest;allTaxOff_protFull;allTaxOff_protBH;allTaxOff_protFF;allTaxOff_protCPD;allTaxOff_protLW;allTaxOff_nonOECD;allTaxOff_until2050;tcExo;tcHighCost;protShare75;protShare50;protShare25
-c09_pop_scenario;;;SSP1;SSP2;SSP3;SSP4;SSP5;SSP1;;;;;;;;SSP1;SSP2;SSP3;SSP4;SSP5;;;;;;;;;;;;;;;;;;
+c09_pop_scenario;;;SSP1;SSP2;SSP3;SSP4;SSP5;SSP1;;;;;;;;SSP1;SSP2;SSP3;SSP4;SSP5;;;;;;;;;;;;;;;;SSP2;SSP2;SSP2
 c09_gdp_scenario;;;SSP1;SSP2;SSP3;SSP4;SSP5;SSP1;;;;;;;;SSP1;SSP2;SSP3;SSP4;SSP5;;;;;;;;;;;;;;;;;;
 c15_food_scenario;;;SSP1;SSP2;SSP3;SSP4;SSP5;SSP1;;;;;;;SSP1;SSP1;SSP2;SSP3;SSP4;SSP5;;;;;;;;;;;;;;;;;;
 s15_elastic_demand;;;1;1;1;1;1;1;;;;;;;0;1;1;1;1;1;;;;;;;;;;;;;;;;;;
@@ -40,4 +40,4 @@ c59_som_scenario;cc;nocc;;;;;;;;;;;;cc;;cc;cc;cc;cc;;;;;;;;;;;;;;;;;;;
 c56_turn_off_pollutant_prices;;;;;;;;;;;;;;;;;;;;;CO2;CO2_N2O;CH4_N2O;all;all;all;all;all;all;all;all;all_nonOECD;all_until2050;;;;;
 tc;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;exo;;;;
 c13_tccost;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;high;;;
-s35_protection_scaling;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0.75;0.50;0.25
+s35_protection_scaling;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0.75;0.5;0.25
