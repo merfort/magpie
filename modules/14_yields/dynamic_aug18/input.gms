@@ -28,3 +28,7 @@ table f14_pyld_hist(t_all,i) Modelled regional pasture yields in the past (tDM p
 $ondelim
 $include "./modules/14_yields/input/f14_pasture_yields_hist.csv"
 $offdelim;
+
+scalars
+ s14_bioenergy_yield_scaling scaling factor for bioenergy yields (1) / 1 /
+;
