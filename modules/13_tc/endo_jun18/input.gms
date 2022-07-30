@@ -39,3 +39,7 @@ $ondelim
 $include "./modules/13_tc/input/f13_tau_historical.csv"
 $offdelim
 ;
+
+scalars
+ s13_max_TC_per_gdp fraction of gdp that can be spent at maximum for technological change (1) / 0 /
+;

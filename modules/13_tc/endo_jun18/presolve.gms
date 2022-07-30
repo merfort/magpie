@@ -21,3 +21,8 @@ else
 	vm_tau.l(i) = pc13_tau(i)*(1+pc13_tcguess(i))**m_yeardiff(t);
 
 	vm_tech_cost.up(i) = 10e9;
+
+* limit tech costs to fraction of gdp
+if(s13_max_TC_per_gdp > 0,
+    vm_tech_cost.up(i) = i09_gdp_mer(t,i) * s13_max_TC_per_gdp;
+);
