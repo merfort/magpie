@@ -42,4 +42,5 @@ $offdelim
 
 scalars
  s13_max_TC_per_gdp fraction of gdp that can be spent at maximum for technological change (1) / 0 /
+ s13_max_TCA_per_gdp fraction of gdp that can be spent at maximum for annuity technological change costs (1) / 0 /
 ;

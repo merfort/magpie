@@ -22,7 +22,12 @@ else
 
 	vm_tech_cost.up(i) = 10e9;
 
-* limit tech costs to fraction of gdp
-if(s13_max_TC_per_gdp > 0,
+* limit tech costs to fraction of gdp starting in 2025
+if(s13_max_TC_per_gdp > 0 AND (NOT sameas(t, "y1995")) AND (NOT sameas(t, "y2000")) AND (NOT sameas(t, "y2005")) AND (NOT sameas(t, "y2010")) AND (NOT sameas(t, "y2015")) AND (NOT sameas(t, "y2020")),
     vm_tech_cost.up(i) = i09_gdp_mer(t,i) * s13_max_TC_per_gdp;
+);
+
+* limit annuity tech costs to fraction of gdp
+if(s13_max_TCA_per_gdp > 0,
+    v13_tech_cost_annuity.up(i) = i09_gdp_mer(t,i) * s13_max_TCA_per_gdp;
 );
