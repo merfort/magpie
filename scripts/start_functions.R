@@ -536,7 +536,8 @@ getReportData <- function(path_to_report_bioenergy, mute_ghgprices_until = "y201
   rep <- read.report(path_to_report_bioenergy, as.list = FALSE)
   if (length(getNames(rep,dim="scenario"))!=1) stop("getReportData: REMIND report contains more or less than 1 scenario.")
   rep <- collapseNames(rep) # get rid of scenrio and model dimension if they exist
-  mag <- deletePlus(rep) #delete "+" and "++" from variable names
+  # mag <- deletePlus(rep) #delete "+" and "++" from variable names
+  mag <- rep
 
   if(!("y1995" %in% getYears(mag))){
   	empty95<-mag[,1,];empty95[,,]<-0;dimnames(empty95)[[2]] <- "y1995"
@@ -555,7 +556,8 @@ getReportData <- function(path_to_report_bioenergy, mute_ghgprices_until = "y201
     message("Reading ghg prices from ",path_to_report_ghgprices)
     ghgrep <- read.report(path_to_report_ghgprices, as.list = FALSE)
     ghgrep <- collapseNames(ghgrep)
-    ghgmag <- deletePlus(ghgrep) #delete "+" and "++" from variable names
+    # ghgmag <- deletePlus(ghgrep) #delete "+" and "++" from variable names
+    ghgmag <- ghgrep
     if(!("y1995" %in% getYears(ghgmag))){
       empty95 <- ghgmag[,1,]
       empty95[,,] <- 0
