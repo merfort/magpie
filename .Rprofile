@@ -1,25 +1,28 @@
-# |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
-# |  authors, and contributors see CITATION.cff file. This file is part
-# |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
-# |  AGPL-3.0, you are granted additional permissions described in the
-# |  MAgPIE License Exception, version 1.0 (see LICENSE file).
-# |  Contact: magpie@pik-potsdam.de
-Sys.setenv(RENV_PATHS_LIBRARY = "renv/library")
+# This profile can be used to link the model to a specified library snapshot
+# (e.g. if your model version is from an older date and does not work with the
+# newest libraries anymore). By default it is not active.
 
-source("renv/activate.R")
+local({ # prevent variables defined here from ending up in the global env
 
-if (!"https://rse.pik-potsdam.de/r/packages" %in% getOption("repos")) {
-  options(repos = c(getOption("repos"), pik = "https://rse.pik-potsdam.de/r/packages"))
+# Set the snapshot path to a path of your choice.
+# Snapshots must be compatible to the R version used. If you are using R 4.1
+# make sure the selected snapshot's name ends with '_R4'.
+
+snapshot <- "/p/projects/rd3mod/R/libraries/snapshots/2023_02_19_R4"
+
+activateSnapshot <- function(snapshot) {
+  stopifnot(file.exists(snapshot))
+  if (R.version$major <= 3) { # include.site is not available before R 4.0
+    if (endsWith(snapshot, "_R4")) stop("Your R version is ", R.version$major, ", but your library snapshot is for 4.0 or later")
+    .libPaths(snapshot)
+  } else {
+    if (!endsWith(snapshot, "_R4")) stop("Your R version is ", R.version$major, ", but your library snapshot is for < 4.0.")
+    # setting include.site to FALSE makes sure that only the snapshot and system libraries are used
+    .libPaths(snapshot, include.site = FALSE)
+  }
+  message("libPaths was set to: ", snapshot)
 }
 
-# bootstrapping, will only run once after this repo is freshly cloned
-if (isTRUE(rownames(installed.packages(priority = "NA")) == "renv")) {
-  message("R package dependencies are not installed in this renv, installing now...")
-  renv::hydrate() # auto-detect and install all dependencies
-  message("Finished installing R package dependencies.")
-}
+activateSnapshot(snapshot)
 
-# source global .Rprofile (very important to load user specific settings)
-if (file.exists("~/.Rprofile")) {
-  source("~/.Rprofile")
-}
+})
