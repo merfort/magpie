@@ -1,4 +1,4 @@
-*** |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -32,7 +32,7 @@ s42_env_flow_scenario              Environmental flow protection scenario       
 *                                                                          s42_env_flow_fraction has no effect.
 
 * Linear fading in of environmental flow policy between startyear and targetyear
-s42_efp_startyear                  Environmental flow policy start year   / 2020 /
+s42_efp_startyear                  Environmental flow policy start year   / 2025 /
 s42_efp_targetyear                 Environmental flow policy target year  / 2040 /
 s42_env_flow_base_fraction         Fraction of available water that is reserved for the environment if no EFR protection policy is implemented (1)           / 0.05 /
 s42_env_flow_fraction              Fraction of available water that is reserved under protection policies (1) / 0.2 /

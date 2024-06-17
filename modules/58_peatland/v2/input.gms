@@ -1,4 +1,4 @@
-*** |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -13,6 +13,7 @@ scalars
   s58_cost_drain_rewet_onetime One-time costs for drainage of rewetted peatland (USD05MER per ha) / 0 /
   s58_rewetting_switch Peatland rewetting on (Inf) or off (0) / Inf /
   s58_fix_peatland Year indicating until when peatland area should be fixed (year) / 2020 /
+  s58_balance_penalty Penalty for technical peatland balance term (USD05MER) / 1e+06 /
 ;
 
 *Peatland area based on Global Peatland Map 2.0 and Global Peatland Database

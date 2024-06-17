@@ -1,4 +1,4 @@
-*** |  (C) 2008-2023 Potsdam Institute for Climate Impact Research (PIK)
+*** |  (C) 2008-2024 Potsdam Institute for Climate Impact Research (PIK)
 *** |  authors, and contributors see CITATION.cff file. This file is part
 *** |  of MAgPIE and licensed under AGPL-3.0-or-later. Under Section 7 of
 *** |  AGPL-3.0, you are granted additional permissions described in the
@@ -33,6 +33,14 @@
             =g=
             sum(ct, p30_snv_shr(ct,j2)) * vm_land(j2,"crop")
           + sum((ct,land_snv,consv_type), pm_land_conservation(ct,j2,land_snv,consv_type));
+
+*' The semi-natural vegetation constraint for cropland areas has been suggested at the per square
+*' kilometer scale. The amount of cropland requiring relocation has therefore been derived from
+*' exogeneous high-resolution land cover information from the Copernicus Global Land Service
+*' (@buchhorn_copernicus_2020).
+
+ q30_land_snv_trans(j2) ..
+         sum(land_snv, vm_lu_transitions(j2,"crop",land_snv)) =g= sum(ct, p30_snv_relocation(ct,j2));
 
 *' As additional constraints minimum and maximum rotational constraints limit
 *' the placing of crops. On the one hand, these rotational constraints reflect
@@ -83,3 +91,8 @@
           =e=
           (vm_land(j2,"crop") - sum((crop_ann30,w), vm_area(j2,crop_ann30,w)))
           * fm_bii_coeff("crop_per",potnatveg) * fm_luh2_side_layers(j2,potnatveg);
+
+*' regional cropland area is calculated for the cropland growth constraint
+ q30_crop_reg(i2) .. v30_crop_area(i2)
+   =e=
+   sum((cell(i2,j2), kcr, w), vm_area(j2,kcr,w));
